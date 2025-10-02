@@ -561,6 +561,229 @@
       box-shadow: 0 12px 30px rgba(251, 191, 36, 0.7);
     }
 
+    /* NUEVA SECCIÓN: UBICACIÓN */
+    .ubicacion-contenedor {
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .ubicacion-titulo {
+      font-size: 2.2em;
+      color: #fbbf24;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    }
+
+    .ubicacion-mapa {
+      background: rgba(254, 243, 199, 0.95);
+      border-radius: 25px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      border: 3px solid #fbbf24;
+      backdrop-filter: blur(10px);
+    }
+
+    .mapa-enlace {
+      display: block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      color: #0c4a6e;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(251, 191, 36, 0.5);
+      border: 2px solid #fbbf24;
+    }
+
+    .mapa-enlace:hover {
+      background: linear-gradient(135deg, #d97706, #fbbf24);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(251, 191, 36, 0.7);
+      color: #0c4a6e;
+    }
+
+    .direccion {
+      font-size: 1.2em;
+      color: #0c4a6e;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .mapa-container {
+      width: 100%;
+      height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 2px solid #fbbf24;
+    }
+
+    .mapa-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0c4a6e, #0369a1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2em;
+    }
+
+    .mapa-placeholder i {
+      font-size: 3em;
+      margin-bottom: 15px;
+    }
+
+    /* NUEVA SECCIÓN: LISTA DE INVITADOS */
+    .invitados-contenedor {
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .invitados-titulo {
+      font-size: 2.2em;
+      color: #fbbf24;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    }
+
+    .invitados-lista {
+      background: rgba(254, 243, 199, 0.95);
+      border-radius: 25px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      border: 3px solid #fbbf24;
+      backdrop-filter: blur(10px);
+    }
+
+    .invitados-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .invitado-item {
+      background: rgba(12, 74, 110, 0.1);
+      padding: 15px;
+      border-radius: 12px;
+      color: #0c4a6e;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .invitado-item:hover {
+      background: rgba(12, 74, 110, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
+    }
+
+    .mensaje-invitados {
+      font-style: italic;
+      color: #0c4a6e;
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+
+    /* FORMULARIO DE CONFIRMACIÓN */
+    .formulario-contenedor {
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .formulario-titulo {
+      font-size: 2.2em;
+      color: #fbbf24;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    }
+
+    .formulario {
+      background: rgba(254, 243, 199, 0.95);
+      border-radius: 25px;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      border: 3px solid #fbbf24;
+      backdrop-filter: blur(10px);
+    }
+
+    .campo-formulario {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .campo-formulario label {
+      display: block;
+      margin-bottom: 8px;
+      color: #0c4a6e;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .campo-formulario input,
+    .campo-formulario select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #fbbf24;
+      border-radius: 10px;
+      font-size: 1em;
+      background: white;
+      color: #0c4a6e;
+      box-sizing: border-box;
+    }
+
+    .campo-formulario input:focus,
+    .campo-formulario select:focus {
+      outline: none;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+    }
+
+    .boton-confirmar {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      color: #0c4a6e;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(251, 191, 36, 0.5);
+    }
+
+    .boton-confirmar:hover {
+      background: linear-gradient(135deg, #d97706, #fbbf24);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(251, 191, 36, 0.7);
+    }
+
+    .mensaje-confirmacion {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(12, 74, 110, 0.1);
+      border-radius: 10px;
+      color: #0c4a6e;
+      font-weight: bold;
+      display: none;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -757,10 +980,76 @@ Nuestra alegría es este amor que crece, que ilumina nuestro camino y que nos in
       </div>
     </div>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScIzAnm6RsgEfwAIF36pWdMGpdqysL-MbljlJV6dQAgWXUi1g/viewform?usp=header" 
-       target="_blank" class="enlace-especial">
-      Confirma tu asistencia aquí
-    </a>
+    <!-- NUEVA SECCIÓN: UBICACIÓN -->
+    <div class="ubicacion-contenedor">
+      <div class="ubicacion-titulo">📍 Ubicación del Evento</div>
+      <div class="ubicacion-mapa">
+        <div class="direccion">
+          <strong>Salón de Eventos "Jardín de los Sueños"</strong><br>
+          Av. Principal 123, Miraflores, Lima<br>
+          <em>Sábado 25 de Octubre, 2025 - 7:00 PM</em>
+        </div>
+        
+        <div class="mapa-container">
+          <div class="mapa-placeholder">
+            <i>🗺️</i>
+            <p>Mapa interactivo de la ubicación</p>
+            <p>Haz clic en el botón para ver en Google Maps</p>
+          </div>
+        </div>
+        
+        <a href="https://maps.app.goo.gl/tk6ounEWJSvhb4986" 
+           target="_blank" class="mapa-enlace">
+          📍 Ver en Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- NUEVA SECCIÓN: FORMULARIO DE CONFIRMACIÓN -->
+    <div class="formulario-contenedor">
+      <div class="formulario-titulo">📝 Confirma tu Asistencia</div>
+      <div class="formulario">
+        <div class="campo-formulario">
+          <label for="nombre">Nombre Completo:</label>
+          <input type="text" id="nombre" placeholder="Ingresa tu nombre completo">
+        </div>
+        
+        <div class="campo-formulario">
+          <label for="asistentes">Número de Asistentes:</label>
+          <select id="asistentes">
+            <option value="1">1 persona</option>
+            <option value="2">2 personas</option>
+            <option value="3">3 personas</option>
+            <option value="4">4 personas</option>
+            <option value="5">5 personas o más</option>
+          </select>
+        </div>
+        
+        <div class="campo-formulario">
+          <label for="mensaje">Mensaje para los novios (opcional):</label>
+          <input type="text" id="mensaje" placeholder="Escribe un mensaje especial">
+        </div>
+        
+        <button class="boton-confirmar" onclick="confirmarAsistencia()">Confirmar Asistencia</button>
+        
+        <div class="mensaje-confirmacion" id="mensajeConfirmacion">
+          ¡Gracias por confirmar tu asistencia! Tu nombre aparecerá en nuestra lista de invitados.
+        </div>
+      </div>
+    </div>
+
+    <!-- NUEVA SECCIÓN: LISTA DE INVITADOS -->
+    <div class="invitados-contenedor">
+      <div class="invitados-titulo">🎉 Nuestros Invitados Confirmados</div>
+      <div class="invitados-lista">
+        <div class="invitados-grid" id="lista-invitados">
+          <!-- Los invitados se cargan dinámicamente -->
+        </div>
+        <div class="mensaje-invitados">
+          ¡Gracias a todos por confirmar su asistencia! 💕
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -891,11 +1180,72 @@ Nuestra alegría es este amor que crece, que ilumina nuestro camino y que nos in
       calendarioDias.innerHTML = html;
     }
 
-    
+    // LISTA DE INVITADOS
+    let listaInvitados = [];
+
+    function cargarInvitados() {
+      const listaInvitadosElement = document.getElementById('lista-invitados');
+      
+      // Cargar invitados desde localStorage si existen
+      const invitadosGuardados = localStorage.getItem('invitadosConfirmados');
+      if (invitadosGuardados) {
+        listaInvitados = JSON.parse(invitadosGuardados);
+      }
+      
+      let html = '';
+      listaInvitados.forEach(invitado => {
+        html += `<div class="invitado-item">${invitado.nombre}</div>`;
+      });
+      
+      listaInvitadosElement.innerHTML = html;
+    }
+
+    // CONFIRMAR ASISTENCIA
+    function confirmarAsistencia() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const asistentes = document.getElementById('asistentes').value;
+      const mensaje = document.getElementById('mensaje').value.trim();
+      
+      if (!nombre) {
+        alert('Por favor, ingresa tu nombre completo');
+        return;
+      }
+      
+      // Agregar invitado a la lista
+      const nuevoInvitado = {
+        nombre: nombre,
+        asistentes: asistentes,
+        mensaje: mensaje,
+        fecha: new Date().toLocaleDateString()
+      };
+      
+      listaInvitados.push(nuevoInvitado);
+      
+      // Guardar en localStorage
+      localStorage.setItem('invitadosConfirmados', JSON.stringify(listaInvitados));
+      
+      // Actualizar la lista visual
+      cargarInvitados();
+      
+      // Mostrar mensaje de confirmación
+      const mensajeConfirmacion = document.getElementById('mensajeConfirmacion');
+      mensajeConfirmacion.style.display = 'block';
+      
+      // Limpiar formulario
+      document.getElementById('nombre').value = '';
+      document.getElementById('asistentes').value = '1';
+      document.getElementById('mensaje').value = '';
+      
+      // Ocultar mensaje después de 5 segundos
+      setTimeout(() => {
+        mensajeConfirmacion.style.display = 'none';
+      }, 5000);
+    }
 
     // Inicializar
     crearParticulas();
     generarCalendario();
+    cargarInvitados();
   </script>
 </body>
 </html>
