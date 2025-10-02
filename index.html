@@ -328,6 +328,22 @@
       background: #e8f5e9;
     }
 
+    /* Instrucciones para fotos */
+    .instrucciones {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      color: #856404;
+    }
+
+    .instrucciones h3 {
+      color: #856404;
+      margin-top: 0;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -362,6 +378,7 @@
   </div>
 
   <!-- Audio para música de fondo -->
+  <!-- REEMPLAZA ESTE ENLACE CON TU MÚSICA -->
   <audio id="musicaFondo" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
@@ -432,13 +449,52 @@
       </div>
     </div>
 
+    <!-- INSTRUCCIONES PARA FOTOS -->
+    <div class="instrucciones">
+      <h3>📸 Cómo agregar tus fotos:</h3>
+      <p>1. Sube tus fotos a <a href="https://imgbb.com/" target="_blank">ImgBB</a> o <a href="https://postimages.org/" target="_blank">PostImages</a></p>
+      <p>2. Copia el enlace directo de cada foto</p>
+      <p>3. Reemplaza los enlaces de abajo con tus enlaces</p>
+    </div>
+
+    <!-- GALERÍA DE FOTOS - REEMPLAZA ESTOS ENLACES CON TUS FOTOS -->
+    <h2 style="color: #1b5e20; margin-top: 50px;">Nuestros Momentos Especiales</h2>
     <div class="galeria">
-      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-           alt="Pareja feliz" class="imagen-galeria">
-      <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-           alt="Manos unidas" class="imagen-galeria">
-      <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
-           alt="Anillos de compromiso" class="imagen-galeria">
+      <!-- FOTO 1 - Reemplaza con tu foto -->
+      <img src="https://i.ibb.co/0jQ8Z9L/default1.jpg" 
+           alt="Nuestra primera foto juntos" 
+           class="imagen-galeria"
+           onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+      
+      <!-- FOTO 2 - Reemplaza con tu foto -->
+      <img src="https://i.ibb.co/0jQ8Z9L/default2.jpg" 
+           alt="Momentos felices" 
+           class="imagen-galeria"
+           onerror="this.src='https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+      
+      <!-- FOTO 3 - Reemplaza con tu foto -->
+      <img src="https://i.ibb.co/0jQ8Z9L/default3.jpg" 
+           alt="Nuestro amor" 
+           class="imagen-galeria"
+           onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+    </div>
+
+    <!-- SEGUNDA FILA DE FOTOS - 3 FOTOS MÁS -->
+    <div class="galeria">
+      <!-- FOTO 4 - Reemplaza con tu foto -->
+      <img src="https://i.ibb.co/0jQ8Z9L/default4.jpg" 
+           alt="Celebrando nuestro amor" 
+           class="imagen-galeria"
+           onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+      
+      <!-- FOTO 5 - Reemplaza con tu foto -->
+      <img src="https://i.ibb.co/0jQ8Z9L/default5.jpg" 
+           alt="Aventuras juntos" 
+           class="imagen-galeria"
+           onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+      
+      <!-- FOTO 6 - Reemplaza con tu foto -->
+    <a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0"></a>
     </div>
 
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScIzAnm6RsgEfwAIF36pWdMGpdqysL-MbljlJV6dQAgWXUi1g/viewform?usp=header" 
