@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitación Pedida de Mano 💍</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      overflow-x: hidden;
+      color: #1b5e20;
+    }
+
+    /* Panel inicial */
+    .panel {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    /* Título principal */
+    .titulo-principal {
+      color: #1b5e20;
+      margin-bottom: 10px;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Texto de invitación */
+    .texto-invitacion {
+      color: #2e7d32;
+      margin-bottom: 30px;
+      font-size: 1.4em;
+      max-width: 80%;
+      line-height: 1.5;
+    }
+
+    /* Contenedor de la carta */
+    .contenedor-carta {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    /* Carta cerrada */
+    .carta-cerrada {
+      width: 400px;
+      height: 240px;
+      background: #d4edda;
+      border: 2px solid #1b5e20;
+      border-radius: 15px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(27, 94, 32, 0.2);
+    }
+
+    .carta-cerrada::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 50%;
+      background: #388e3c;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-radius: 15px 15px 0 0;
+    }
+
+    /* Lazo sin bordes */
+    .lazo {
+      width: 140px;
+      position: absolute;
+      top: 10px;       
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: balanceo 2s infinite ease-in-out;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    @keyframes balanceo {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      25% { transform: translateX(-50%) rotate(5deg); }
+      50% { transform: translateX(-50%) rotate(0deg); }
+      75% { transform: translateX(-50%) rotate(-5deg); }
+      100% { transform: translateX(-50%) rotate(0deg); }
+    }
+
+    /* Botón sobre la carta */
+    .boton-carta {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      background: #1b5e20;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
+      z-index: 10;
+    }
+
+    .boton-carta:hover {
+      background: #388e3c;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    /* Carta abierta */
+    .carta-abierta {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      background: #fff;
+      border: 2px solid #1b5e20;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(27, 94, 32, 0.3);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      box-sizing: border-box;
+      transform-origin: center;
+    }
+
+    .carta-abierta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, #4caf50, #388e3c, #4caf50);
+    }
+
+    .frase-bonita {
+      font-size: 24px;
+      color: #1b5e20;
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-style: italic;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease 0.5s;
+    }
+
+    .frase-bonita.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .corazon {
+      font-size: 40px;
+      color: #388e3c;
+      margin-top: 20px;
+      animation: latido 1.5s infinite;
+    }
+
+    @keyframes latido {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .loader {
+      display: none;
+      margin-top: 20px;
+      font-style: italic;
+      color: #2e7d32;
+    }
+
+    /* Contenido principal - VERSIÓN 2 */
+    .contenido {
+      display: none;
+      padding: 50px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      min-height: 100vh;
+    }
+
+    .contenido h1 {
+      font-size: 2.5em;
+      color: #1b5e20;
+      margin-bottom: 40px;
+    }
+
+    /* Secciones de contenido */
+    .secciones-contenedor {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .seccion {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin: 30px 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border-left: 5px solid #388e3c;
+    }
+
+    .seccion h2 {
+      color: #1b5e20;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+
+    .seccion p {
+      line-height: 1.8;
+      color: #2e7d32;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    /* Padres */
+    .padres-contenedor {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .padres {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      min-width: 250px;
+    }
+
+    .padres h3 {
+      color: #1b5e20;
+      border-bottom: 2px solid #c8e6c9;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* Galería */
+    .galeria {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .imagen-galeria {
+      width: 200px;
+      height: 200px;
+      border-radius: 15px;
+      border: 3px solid #1b5e20;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .imagen-galeria:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Contador */
+    .contador {
+      margin-top: 40px;
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #388e3c;
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    /* Enlace */
+    .enlace-especial {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 18px 35px;
+      background: #1b5e20;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .enlace-especial:hover {
+      background: #388e3c;
+      transform: scale(1.05);
+    }
+
+    /* Control de música */
+    .control-musica {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1000;
+      border: 2px solid #1b5e20;
+    }
+
+    .control-musica:hover {
+      background: #e8f5e9;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Animación de apertura de carta */
+    @keyframes abrirCarta {
+      0% {
+        transform: scale(1) rotateX(0);
+        height: 240px;
+      }
+      50% {
+        transform: scale(1.1) rotateX(10deg);
+        height: 240px;
+      }
+      100% {
+        transform: scale(1) rotateX(0);
+        height: 500px;
+      }
+    }
+
+    .abriendo {
+      animation: abrirCarta 1.5s forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Control de música -->
+  <div class="control-musica" id="controlMusica" onclick="toggleMusica()">
+    <span id="iconoMusica">🎵</span>
+  </div>
+
+  <!-- Audio para música de fondo -->
+  <audio id="musicaFondo" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <!-- Panel inicial -->
+  <div class="panel" id="panel">
+    <div class="titulo-principal">Nuestra Carta Especial 💌</div>
+    <div class="texto-invitacion">
+      Te invitamos a la pedida de mano de <b>ANGEL</b> y <b>ISABEL</b>, donde celebraremos juntos el comienzo de una nueva etapa 🌿
+    </div>
+
+    <div class="contenedor-carta">
+      <div class="carta-cerrada" id="cartaCerrada">
+        <div class="lazo">
+          <svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M70,10 C85,10 95,25 95,40 C95,55 85,70 70,70 C55,70 45,55 45,40 C45,25 55,10 70,10 Z" fill="#e60073"/>
+            <path d="M70,15 C60,15 50,25 50,40 C50,55 60,65 70,65 C80,65 90,55 90,40 C90,25 80,15 70,15 Z" fill="#ff4d94"/>
+            <path d="M70,20 C65,20 55,30 55,40 C55,50 65,60 70,60 C75,60 85,50 85,40 C85,30 75,20 70,20 Z" fill="#ff99c2"/>
+          </svg>
+        </div>
+      </div>
+
+      <button class="boton-carta" id="botonAbreme" onclick="abrirCarta()">Ábreme</button>
+
+      <div class="carta-abierta" id="cartaAbierta">
+        <div class="frase-bonita" id="fraseBonita">
+          "El amor no se mide por la cantidad de tiempo, sino por la intensidad con la que late el corazón. 
+          Hoy, nuestro corazón late al unísono y queremos compartir este latido eterno contigo."
+        </div>
+        <div class="corazon">💕</div>
+      </div>
+    </div>
+
+    <div class="loader" id="loader">Espere un momento...</div>
+  </div>
+
+  <!-- Contenido principal - VERSIÓN 2 -->
+  <div class="contenido" id="contenido">
+    <h1>Dios, en su infinita bondad...</h1>
+    
+    <div class="secciones-contenedor">
+      <div class="seccion">
+        <h2>Nuestra Historia</h2>
+        <p>Nos ha concedido el privilegio de conocernos y de amarnos. Con su bendición hemos aprendido que el amor verdadero es el camino que nos guía y la fuerza que nos une.</p>
+      </div>
+      
+      <div class="seccion">
+        <h2>Nuestra Promesa</h2>
+        <p>Hoy queremos dar un paso más en nuestra historia, sellando este sentimiento con la promesa de unir nuestras vidas para siempre.</p>
+      </div>
+      
+      <div class="seccion">
+        <h2>Nuestra Alegría</h2>
+        <p>Con alegría en el corazón y agradecimiento en el alma, deseamos compartir este momento tan especial con nuestras familias y seres queridos, quienes son testigos de nuestro amor y parte esencial de nuestra felicidad.</p>
+      </div>
+    </div>
+
+    <div class="padres-contenedor">
+      <div class="padres">
+        <h3>Padres del Novio</h3>
+        <p>Filomena Ordoñez Martinez</p>
+      </div>
+      
+      <div class="padres">
+        <h3>Padres de la Novia</h3>
+        <p>Carmen Huacho</p>
+      </div>
+    </div>
+
+    <div class="galeria">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+           alt="Pareja feliz" class="imagen-galeria">
+      <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+           alt="Manos unidas" class="imagen-galeria">
+      <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+           alt="Anillos de compromiso" class="imagen-galeria">
+    </div>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScIzAnm6RsgEfwAIF36pWdMGpdqysL-MbljlJV6dQAgWXUi1g/viewform?usp=header" 
+       target="_blank" class="enlace-especial">
+      Confirma tu asistencia aquí
+    </a>
+
+    <div class="contador" id="contador"></div>
+  </div>
+
+  <script>
+    // Control de música
+    const musica = document.getElementById('musicaFondo');
+    const iconoMusica = document.getElementById('iconoMusica');
+    let musicaReproduciendo = false;
+
+    function toggleMusica() {
+      if (musicaReproduciendo) {
+        musica.pause();
+        iconoMusica.textContent = '🎵';
+      } else {
+        musica.play();
+        iconoMusica.textContent = '🔊';
+      }
+      musicaReproduciendo = !musicaReproduciendo;
+    }
+
+    // Función para abrir la carta
+    function abrirCarta() {
+      document.getElementById('botonAbreme').style.display = 'none';
+      document.getElementById('loader').style.display = 'block';
+      
+      const cartaCerrada = document.getElementById('cartaCerrada');
+      const cartaAbierta = document.getElementById('cartaAbierta');
+      
+      cartaCerrada.classList.add('abriendo');
+      
+      setTimeout(() => {
+        cartaCerrada.style.display = 'none';
+        cartaAbierta.style.display = 'flex';
+        
+        setTimeout(() => {
+          document.getElementById('fraseBonita').classList.add('mostrar');
+          
+          setTimeout(() => {
+            document.getElementById('panel').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
+          }, 10000);
+        }, 500);
+      }, 1500);
+    }
+
+    // Contador
+    const fechaEvento = new Date("Oct 25, 2025 19:00:00").getTime();
+    const intervalo = setInterval(function() {
+      const ahora = new Date().getTime();
+      const distancia = fechaEvento - ahora;
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      document.getElementById("contador").innerHTML =
+        dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
+
+      if (distancia < 0) {
+        clearInterval(intervalo);
+        document.getElementById("contador").innerHTML = "¡Ya llegó el gran día!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
