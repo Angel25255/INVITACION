@@ -7,9 +7,32 @@
     body {
       margin: 0;
       font-family: 'Georgia', serif;
-      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       overflow-x: hidden;
-      color: #1b5e20;
+      color: #2c3e50;
+    }
+
+    /* Efectos de partículas para el fondo */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
     }
 
     /* Panel inicial */
@@ -17,31 +40,37 @@
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       z-index: 1000;
+      backdrop-filter: blur(5px);
     }
 
     /* Título principal */
     .titulo-principal {
-      color: #1b5e20;
+      color: white;
       margin-bottom: 10px;
-      font-size: 2.5em;
+      font-size: 2.8em;
       font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #fff, #f8f9fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* Texto de invitación */
     .texto-invitacion {
-      color: #2e7d32;
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 30px;
       font-size: 1.4em;
       max-width: 80%;
       line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     /* Contenedor de la carta */
@@ -54,11 +83,17 @@
     .carta-cerrada {
       width: 400px;
       height: 240px;
-      background: #d4edda;
-      border: 2px solid #1b5e20;
-      border-radius: 15px;
+      background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
       position: relative;
-      box-shadow: 0 4px 15px rgba(27, 94, 32, 0.2);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .carta-cerrada:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
     .carta-cerrada::before {
@@ -66,9 +101,9 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 50%;
-      background: #388e3c;
+      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
-      border-radius: 15px 15px 0 0;
+      border-radius: 20px 20px 0 0;
     }
 
     /* Lazo sin bordes */
@@ -83,6 +118,7 @@
       border: none !important;
       outline: none !important;
       box-shadow: none !important;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
     }
 
     @keyframes balanceo {
@@ -99,21 +135,24 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      padding: 12px 25px;
+      padding: 15px 30px;
       font-size: 18px;
       border: none;
-      background: #1b5e20;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 4px 10px rgba(27, 94, 32, 0.3);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
       z-index: 10;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     .boton-carta:hover {
-      background: #388e3c;
-      transform: translate(-50%, -50%) scale(1.05);
+      background: linear-gradient(135deg, #764ba2, #667eea);
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 12px 25px rgba(102, 126, 234, 0.6);
     }
 
     /* Carta abierta */
@@ -121,11 +160,11 @@
       position: relative;
       width: 400px;
       height: 500px;
-      background: #fff;
-      border: 2px solid #1b5e20;
-      border-radius: 15px;
+      background: linear-gradient(145deg, #ffffff, #f8f9fa);
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(27, 94, 32, 0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       display: none;
       flex-direction: column;
       justify-content: center;
@@ -142,12 +181,12 @@
       left: 0;
       width: 100%;
       height: 10px;
-      background: linear-gradient(90deg, #4caf50, #388e3c, #4caf50);
+      background: linear-gradient(90deg, #ff6b6b, #ff8e8e, #ff6b6b);
     }
 
     .frase-bonita {
       font-size: 24px;
-      color: #1b5e20;
+      color: #2c3e50;
       text-align: center;
       line-height: 1.6;
       margin-bottom: 30px;
@@ -155,6 +194,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: all 1s ease 0.5s;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
     .frase-bonita.mostrar {
@@ -163,15 +203,16 @@
     }
 
     .corazon {
-      font-size: 40px;
-      color: #388e3c;
+      font-size: 50px;
+      color: #ff6b6b;
       margin-top: 20px;
       animation: latido 1.5s infinite;
+      filter: drop-shadow(0 4px 8px rgba(255, 107, 107, 0.3));
     }
 
     @keyframes latido {
       0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      50% { transform: scale(1.3); }
       100% { transform: scale(1); }
     }
 
@@ -179,23 +220,41 @@
       display: none;
       margin-top: 20px;
       font-style: italic;
-      color: #2e7d32;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1em;
     }
 
-    /* Contenido principal - VERSIÓN 2 */
+    /* Contenido principal */
     .contenido {
       display: none;
       padding: 50px 20px;
       text-align: center;
       animation: fadeIn 2s ease;
-      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
+      position: relative;
+    }
+
+    .contenido::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white"/><circle cx="20" cy="20" r="0.5" fill="white"/><circle cx="80" cy="80" r="0.7" fill="white"/><circle cx="30" cy="70" r="0.8" fill="white"/><circle cx="70" cy="30" r="0.6" fill="white"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      pointer-events: none;
     }
 
     .contenido h1 {
-      font-size: 2.5em;
-      color: #1b5e20;
+      font-size: 2.8em;
+      color: white;
       margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #fff, #f8f9fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* Secciones de contenido */
@@ -205,23 +264,33 @@
     }
 
     .seccion {
-      background: white;
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
       padding: 40px;
       margin: 30px 0;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border-left: 5px solid #388e3c;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .seccion:hover {
+      transform: translateY(-5px);
     }
 
     .seccion h2 {
-      color: #1b5e20;
+      color: #2c3e50;
       margin-bottom: 20px;
       font-size: 1.8em;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .seccion p {
       line-height: 1.8;
-      color: #2e7d32;
+      color: #5a6c7d;
       font-size: 1.1em;
       text-align: center;
     }
@@ -236,18 +305,29 @@
     }
 
     .padres {
-      background: white;
-      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
       padding: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       min-width: 250px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .padres:hover {
+      transform: translateY(-3px);
     }
 
     .padres h3 {
-      color: #1b5e20;
-      border-bottom: 2px solid #c8e6c9;
+      color: #2c3e50;
+      border-bottom: 2px solid #e9ecef;
       padding-bottom: 10px;
       margin-bottom: 15px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* Galería */
@@ -260,17 +340,19 @@
     }
 
     .imagen-galeria {
-      width: 200px;
-      height: 200px;
-      border-radius: 15px;
-      border: 3px solid #1b5e20;
+      width: 220px;
+      height: 220px;
+      border-radius: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.8);
       object-fit: cover;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
     .imagen-galeria:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border-color: rgba(255, 255, 255, 1);
     }
 
     /* CONTADOR MEJORADO */
@@ -280,22 +362,24 @@
     }
 
     .contador-titulo {
-      font-size: 2em;
-      color: #1b5e20;
+      font-size: 2.2em;
+      color: white;
       margin-bottom: 30px;
       font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     .contador {
-      font-size: 3em;
+      font-size: 3.2em;
       font-weight: bold;
-      color: #388e3c;
-      background: white;
+      color: white;
+      background: rgba(255, 255, 255, 0.15);
       padding: 40px;
       border-radius: 25px;
       display: inline-block;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      border: 3px solid #1b5e20;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
       min-width: 600px;
     }
 
@@ -307,36 +391,137 @@
 
     .tiempo-numero {
       font-size: 1.2em;
-      color: #1b5e20;
+      color: white;
       font-weight: bold;
       display: block;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     .tiempo-texto {
       font-size: 0.6em;
-      color: #2e7d32;
+      color: rgba(255, 255, 255, 0.9);
       text-transform: uppercase;
       margin-top: 5px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* CALENDARIO */
+    .calendario-contenedor {
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .calendario-titulo {
+      font-size: 2em;
+      color: white;
+      margin-bottom: 25px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .calendario {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      padding: 30px;
+      display: inline-block;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      min-width: 350px;
+    }
+
+    .mes {
+      font-size: 1.6em;
+      color: #2c3e50;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dias-semana {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .dia-semana {
+      font-weight: bold;
+      color: #667eea;
+      font-size: 0.9em;
+    }
+
+    .dias-mes {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .dia {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .dia.vacio {
+      visibility: hidden;
+    }
+
+    .dia.normal {
+      color: #5a6c7d;
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .dia.normal:hover {
+      background: rgba(102, 126, 234, 0.2);
+      transform: scale(1.1);
+    }
+
+    .dia.destacado {
+      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      color: white;
+      transform: scale(1.2);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+      animation: latido 2s infinite;
+    }
+
+    .leyenda-calendario {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #667eea;
+      font-style: italic;
+      font-weight: bold;
     }
 
     /* Enlace */
     .enlace-especial {
       display: inline-block;
       margin-top: 30px;
-      padding: 18px 35px;
-      background: #1b5e20;
+      padding: 20px 40px;
+      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
       color: white;
       text-decoration: none;
-      border-radius: 10px;
+      border-radius: 15px;
       font-weight: bold;
-      font-size: 1.1em;
+      font-size: 1.2em;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .enlace-especial:hover {
-      background: #388e3c;
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #ff8e8e, #ff6b6b);
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
     }
 
     /* Control de música */
@@ -344,26 +529,28 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: white;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
       cursor: pointer;
       z-index: 1000;
-      border: 2px solid #1b5e20;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
     }
 
     .control-musica:hover {
-      background: #e8f5e9;
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Animación de apertura de carta */
@@ -389,6 +576,9 @@
 </head>
 <body>
 
+  <!-- Partículas de fondo -->
+  <div class="particles" id="particles"></div>
+
   <!-- Control de música -->
   <div class="control-musica" id="controlMusica" onclick="toggleMusica()">
     <span id="iconoMusica">🔊</span>
@@ -411,9 +601,9 @@
       <div class="carta-cerrada" id="cartaCerrada">
         <div class="lazo">
           <svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg">
-            <path d="M70,10 C85,10 95,25 95,40 C95,55 85,70 70,70 C55,70 45,55 45,40 C45,25 55,10 70,10 Z" fill="#e60073"/>
-            <path d="M70,15 C60,15 50,25 50,40 C50,55 60,65 70,65 C80,65 90,55 90,40 C90,25 80,15 70,15 Z" fill="#ff4d94"/>
-            <path d="M70,20 C65,20 55,30 55,40 C55,50 65,60 70,60 C75,60 85,50 85,40 C85,30 75,20 70,20 Z" fill="#ff99c2"/>
+            <path d="M70,10 C85,10 95,25 95,40 C95,55 85,70 70,70 C55,70 45,55 45,40 C45,25 55,10 70,10 Z" fill="#ff6b6b"/>
+            <path d="M70,15 C60,15 50,25 50,40 C50,55 60,65 70,65 C80,65 90,55 90,40 C90,25 80,15 70,15 Z" fill="#ff8e8e"/>
+            <path d="M70,20 C65,20 55,30 55,40 C55,50 65,60 70,60 C75,60 85,50 85,40 C85,30 75,20 70,20 Z" fill="#ffafaf"/>
           </svg>
         </div>
       </div>
@@ -432,7 +622,7 @@
     <div class="loader" id="loader">Espere un momento...</div>
   </div>
 
-  <!-- Contenido principal - VERSIÓN 2 -->
+  <!-- Contenido principal -->
   <div class="contenido" id="contenido">
     <h1>Dios, en su infinita bondad...</h1>
     
@@ -465,43 +655,36 @@
       </div>
     </div>
 
-    <!-- GALERÍA DE FOTOS CORREGIDA -->
-    <h2 style="color: #1b5e20; margin-top: 50px;">Nuestros Momentos Especiales</h2>
+    <!-- GALERÍA DE FOTOS -->
+    <h2 style="color: white; margin-top: 50px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Nuestros Momentos Especiales</h2>
     <div class="galeria">
-      <!-- FOTO 1 - ENLACE CORREGIDO -->
       <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Nuestra primera foto juntos" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 2 - ENLACE CORREGIDO -->
       <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Momentos felices" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 3 - ENLACE CORREGIDO -->
       <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Nuestro amor" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
     </div>
 
-    <!-- SEGUNDA FILA DE FOTOS - ENLACES CORREGIDOS -->
     <div class="galeria">
-      <!-- FOTO 4 - ENLACE CORREGIDO -->
       <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Celebrando nuestro amor" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 5 - ENLACE CORREGIDO -->
       <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Aventuras juntos" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 6 - ENLACE CORREGIDO -->
       <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Nuestro compromiso" 
            class="imagen-galeria"
@@ -531,6 +714,27 @@
       </div>
     </div>
 
+    <!-- CALENDARIO -->
+    <div class="calendario-contenedor">
+      <div class="calendario-titulo">📅 Nuestra Fecha Especial</div>
+      <div class="calendario">
+        <div class="mes">Octubre 2025</div>
+        <div class="dias-semana">
+          <div class="dia-semana">Lun</div>
+          <div class="dia-semana">Mar</div>
+          <div class="dia-semana">Mié</div>
+          <div class="dia-semana">Jue</div>
+          <div class="dia-semana">Vie</div>
+          <div class="dia-semana">Sáb</div>
+          <div class="dia-semana">Dom</div>
+        </div>
+        <div class="dias-mes" id="calendario-dias">
+          <!-- Los días se generan con JavaScript -->
+        </div>
+        <div class="leyenda-calendario">✨ 25 de Octubre - Nuestro día especial</div>
+      </div>
+    </div>
+
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScIzAnm6RsgEfwAIF36pWdMGpdqysL-MbljlJV6dQAgWXUi1g/viewform?usp=header" 
        target="_blank" class="enlace-especial">
       Confirma tu asistencia aquí
@@ -538,6 +742,32 @@
   </div>
 
   <script>
+    // Crear partículas de fondo
+    function crearParticulas() {
+      const particles = document.getElementById('particles');
+      const particleCount = 25;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Tamaño aleatorio
+        const size = Math.random() * 6 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Posición aleatoria
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Animación aleatoria
+        particle.style.animationDelay = `${Math.random() * 6}s`;
+        particle.style.animationDuration = `${Math.random() * 3 + 4}s`;
+        
+        particles.appendChild(particle);
+      }
+    }
+
     // Control de música
     const musica = document.getElementById('musicaFondo');
     const iconoMusica = document.getElementById('iconoMusica');
@@ -550,7 +780,6 @@
         iconoMusica.textContent = '🔊';
       }).catch(error => {
         console.log('La reproducción automática fue bloqueada:', error);
-        // Si la reproducción automática falla, mostramos el control para que el usuario active la música
         iconoMusica.textContent = '🎵';
         musicaReproduciendo = false;
       });
@@ -606,7 +835,6 @@
       const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-      // Actualizar cada elemento individualmente
       document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
       document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
       document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
@@ -614,9 +842,36 @@
 
       if (distancia < 0) {
         clearInterval(intervalo);
-        document.getElementById("contador").innerHTML = "<div style='font-size: 2em; color: #e91e63;'>¡Ya llegó el gran día! 💕</div>";
+        document.getElementById("contador").innerHTML = "<div style='font-size: 2em; color: #ff6b6b; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>¡Ya llegó el gran día! 💕</div>";
       }
     }, 1000);
+
+    // GENERAR CALENDARIO
+    function generarCalendario() {
+      const calendarioDias = document.getElementById('calendario-dias');
+      const diasEnMes = 31;
+      const primerDia = 3;
+      
+      let html = '';
+      
+      for (let i = 0; i < primerDia; i++) {
+        html += '<div class="dia vacio"></div>';
+      }
+      
+      for (let dia = 1; dia <= diasEnMes; dia++) {
+        if (dia === 25) {
+          html += `<div class="dia destacado" title="¡Nuestro día especial!">${dia}</div>`;
+        } else {
+          html += `<div class="dia normal">${dia}</div>`;
+        }
+      }
+      
+      calendarioDias.innerHTML = html;
+    }
+
+    // Inicializar
+    crearParticulas();
+    generarCalendario();
   </script>
 </body>
 </html>
