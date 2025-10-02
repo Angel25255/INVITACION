@@ -328,20 +328,15 @@
       background: #e8f5e9;
     }
 
-    /* Instrucciones para fotos */
-    .instrucciones {
-      background: #fff3cd;
-      border: 1px solid #ffeaa7;
+    /* Instrucciones para música */
+    .instrucciones-musica {
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
       border-radius: 10px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 800px;
-      color: #856404;
-    }
-
-    .instrucciones h3 {
-      color: #856404;
-      margin-top: 0;
+      padding: 15px;
+      margin: 10px auto;
+      max-width: 600px;
+      color: #0c5460;
     }
 
     @keyframes fadeIn {
@@ -374,13 +369,15 @@
 
   <!-- Control de música -->
   <div class="control-musica" id="controlMusica" onclick="toggleMusica()">
-    <span id="iconoMusica">🎵</span>
+    <span id="iconoMusica">🔊</span>
   </div>
 
   <!-- Audio para música de fondo -->
-  <!-- REEMPLAZA ESTE ENLACE CON TU MÚSICA -->
+  <!-- ============================================ -->
+  <!-- OPCIÓN 1: MÚSICA FUNCIONAL (RECOMENDADA) -->
+  <!-- ============================================ -->
   <audio id="musicaFondo" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <source src="https://files.catbox.moe/v19ro0.mpeg" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
 
@@ -419,6 +416,7 @@
   <!-- Contenido principal - VERSIÓN 2 -->
   <div class="contenido" id="contenido">
     <h1>Dios, en su infinita bondad...</h1>
+  
     
     <div class="secciones-contenedor">
       <div class="seccion">
@@ -449,31 +447,23 @@
       </div>
     </div>
 
-    <!-- INSTRUCCIONES PARA FOTOS -->
-    <div class="instrucciones">
-      <h3>📸 Cómo agregar tus fotos:</h3>
-      <p>1. Sube tus fotos a <a href="https://imgbb.com/" target="_blank">ImgBB</a> o <a href="https://postimages.org/" target="_blank">PostImages</a></p>
-      <p>2. Copia el enlace directo de cada foto</p>
-      <p>3. Reemplaza los enlaces de abajo con tus enlaces</p>
-    </div>
-
     <!-- GALERÍA DE FOTOS - REEMPLAZA ESTOS ENLACES CON TUS FOTOS -->
     <h2 style="color: #1b5e20; margin-top: 50px;">Nuestros Momentos Especiales</h2>
     <div class="galeria">
-      <!-- FOTO 1 - Reemplaza con tu foto -->
-      <img src="https://i.ibb.co/0jQ8Z9L/default1.jpg" 
+      <!-- FOTO 1 - REEMPLAZA CON TU FOTO PERSONAL -->
+      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
            alt="Nuestra primera foto juntos" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 2 - Reemplaza con tu foto -->
-      <img src="https://i.ibb.co/0jQ8Z9L/default2.jpg" 
+      <!-- FOTO 2 - REEMPLAZA CON TU FOTO PERSONAL -->
+      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
            alt="Momentos felices" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 3 - Reemplaza con tu foto -->
-      <img src="https://i.ibb.co/0jQ8Z9L/default3.jpg" 
+      <!-- FOTO 3 - REEMPLAZA CON TU FOTO PERSONAL -->
+      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
            alt="Nuestro amor" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
@@ -481,20 +471,23 @@
 
     <!-- SEGUNDA FILA DE FOTOS - 3 FOTOS MÁS -->
     <div class="galeria">
-      <!-- FOTO 4 - Reemplaza con tu foto -->
-      <img src="https://i.ibb.co/0jQ8Z9L/default4.jpg" 
+      <!-- FOTO 4 - REEMPLAZA CON TU FOTO PERSONAL -->
+      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
            alt="Celebrando nuestro amor" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 5 - Reemplaza con tu foto -->
-      <img src="https://i.ibb.co/0jQ8Z9L/default5.jpg" 
+      <!-- FOTO 5 - REEMPLAZA CON TU FOTO PERSONAL -->
+      <img src="<a href="https://imgbb.com/"><img src="https://i.ibb.co/0yy7RMT5/cinta-png.png" alt="cinta-png" border="0"></a>" /></a>" 
            alt="Aventuras juntos" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 6 - Reemplaza con tu foto -->
-    <a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0"></a>
+      <!-- FOTO 6 - REEMPLAZA CON TU FOTO PERSONAL -->
+      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
+           alt="Nuestro compromiso" 
+           class="imagen-galeria"
+           onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
     </div>
 
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScIzAnm6RsgEfwAIF36pWdMGpdqysL-MbljlJV6dQAgWXUi1g/viewform?usp=header" 
@@ -510,6 +503,19 @@
     const musica = document.getElementById('musicaFondo');
     const iconoMusica = document.getElementById('iconoMusica');
     let musicaReproduciendo = false;
+
+    // La música se reproduce automáticamente cuando se abre la carta
+    function iniciarMusica() {
+      musica.play().then(() => {
+        musicaReproduciendo = true;
+        iconoMusica.textContent = '🔊';
+      }).catch(error => {
+        console.log('La reproducción automática fue bloqueada:', error);
+        // Si la reproducción automática falla, mostramos el control para que el usuario active la música
+        iconoMusica.textContent = '🎵';
+        musicaReproduciendo = false;
+      });
+    }
 
     function toggleMusica() {
       if (musicaReproduciendo) {
@@ -535,6 +541,9 @@
       setTimeout(() => {
         cartaCerrada.style.display = 'none';
         cartaAbierta.style.display = 'flex';
+        
+        // INICIAR MÚSICA cuando la carta se abre
+        iniciarMusica();
         
         setTimeout(() => {
           document.getElementById('fraseBonita').classList.add('mostrar');
