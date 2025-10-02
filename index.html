@@ -273,17 +273,50 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
-    /* Contador */
+    /* CONTADOR MEJORADO */
+    .contador-contenedor {
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .contador-titulo {
+      font-size: 2em;
+      color: #1b5e20;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
     .contador {
-      margin-top: 40px;
-      font-size: 2.2em;
+      font-size: 3em;
       font-weight: bold;
       color: #388e3c;
       background: white;
-      padding: 25px;
-      border-radius: 20px;
+      padding: 40px;
+      border-radius: 25px;
       display: inline-block;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border: 3px solid #1b5e20;
+      min-width: 600px;
+    }
+
+    .tiempo-item {
+      display: inline-block;
+      margin: 0 15px;
+      text-align: center;
+    }
+
+    .tiempo-numero {
+      font-size: 1.2em;
+      color: #1b5e20;
+      font-weight: bold;
+      display: block;
+    }
+
+    .tiempo-texto {
+      font-size: 0.6em;
+      color: #2e7d32;
+      text-transform: uppercase;
+      margin-top: 5px;
     }
 
     /* Enlace */
@@ -328,17 +361,6 @@
       background: #e8f5e9;
     }
 
-    /* Instrucciones para música */
-    .instrucciones-musica {
-      background: #d1ecf1;
-      border: 1px solid #bee5eb;
-      border-radius: 10px;
-      padding: 15px;
-      margin: 10px auto;
-      max-width: 600px;
-      color: #0c5460;
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -373,9 +395,6 @@
   </div>
 
   <!-- Audio para música de fondo -->
-  <!-- ============================================ -->
-  <!-- OPCIÓN 1: MÚSICA FUNCIONAL (RECOMENDADA) -->
-  <!-- ============================================ -->
   <audio id="musicaFondo" loop>
     <source src="https://files.catbox.moe/v19ro0.mpeg" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
@@ -416,7 +435,6 @@
   <!-- Contenido principal - VERSIÓN 2 -->
   <div class="contenido" id="contenido">
     <h1>Dios, en su infinita bondad...</h1>
-  
     
     <div class="secciones-contenedor">
       <div class="seccion">
@@ -447,55 +465,76 @@
       </div>
     </div>
 
-    <!-- GALERÍA DE FOTOS - REEMPLAZA ESTOS ENLACES CON TUS FOTOS -->
+    <!-- GALERÍA DE FOTOS CORREGIDA -->
     <h2 style="color: #1b5e20; margin-top: 50px;">Nuestros Momentos Especiales</h2>
     <div class="galeria">
-      <!-- FOTO 1 - REEMPLAZA CON TU FOTO PERSONAL -->
-      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
+      <!-- FOTO 1 - ENLACE CORREGIDO -->
+      <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Nuestra primera foto juntos" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 2 - REEMPLAZA CON TU FOTO PERSONAL -->
-      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
+      <!-- FOTO 2 - ENLACE CORREGIDO -->
+      <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Momentos felices" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 3 - REEMPLAZA CON TU FOTO PERSONAL -->
-      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
+      <!-- FOTO 3 - ENLACE CORREGIDO -->
+      <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Nuestro amor" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
     </div>
 
-    <!-- SEGUNDA FILA DE FOTOS - 3 FOTOS MÁS -->
+    <!-- SEGUNDA FILA DE FOTOS - ENLACES CORREGIDOS -->
     <div class="galeria">
-      <!-- FOTO 4 - REEMPLAZA CON TU FOTO PERSONAL -->
-      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
+      <!-- FOTO 4 - ENLACE CORREGIDO -->
+      <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Celebrando nuestro amor" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 5 - REEMPLAZA CON TU FOTO PERSONAL -->
-      <img src="<a href="https://imgbb.com/"><img src="https://i.ibb.co/0yy7RMT5/cinta-png.png" alt="cinta-png" border="0"></a>" /></a>" 
+      <!-- FOTO 5 - ENLACE CORREGIDO -->
+      <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Aventuras juntos" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
       
-      <!-- FOTO 6 - REEMPLAZA CON TU FOTO PERSONAL -->
-      <img src="<a href="https://ibb.co/V0K6dHx3"><img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" alt="Whats-App-Image-2025-09-23-at-9-54-51-AM" border="0" /></a>" 
+      <!-- FOTO 6 - ENLACE CORREGIDO -->
+      <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
            alt="Nuestro compromiso" 
            class="imagen-galeria"
            onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+    </div>
+
+    <!-- CONTADOR MEJORADO -->
+    <div class="contador-contenedor">
+      <div class="contador-titulo">⏳ Faltan solo...</div>
+      <div class="contador" id="contador">
+        <div class="tiempo-item">
+          <span class="tiempo-numero" id="dias">00</span>
+          <span class="tiempo-texto">Días</span>
+        </div>
+        <div class="tiempo-item">
+          <span class="tiempo-numero" id="horas">00</span>
+          <span class="tiempo-texto">Horas</span>
+        </div>
+        <div class="tiempo-item">
+          <span class="tiempo-numero" id="minutos">00</span>
+          <span class="tiempo-texto">Minutos</span>
+        </div>
+        <div class="tiempo-item">
+          <span class="tiempo-numero" id="segundos">00</span>
+          <span class="tiempo-texto">Segundos</span>
+        </div>
+      </div>
     </div>
 
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScIzAnm6RsgEfwAIF36pWdMGpdqysL-MbljlJV6dQAgWXUi1g/viewform?usp=header" 
        target="_blank" class="enlace-especial">
       Confirma tu asistencia aquí
     </a>
-
-    <div class="contador" id="contador"></div>
   </div>
 
   <script>
@@ -556,7 +595,7 @@
       }, 1500);
     }
 
-    // Contador
+    // CONTADOR MEJORADO
     const fechaEvento = new Date("Oct 25, 2025 19:00:00").getTime();
     const intervalo = setInterval(function() {
       const ahora = new Date().getTime();
@@ -567,12 +606,15 @@
       const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-      document.getElementById("contador").innerHTML =
-        dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
+      // Actualizar cada elemento individualmente
+      document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
+      document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+      document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
+      document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
 
       if (distancia < 0) {
         clearInterval(intervalo);
-        document.getElementById("contador").innerHTML = "¡Ya llegó el gran día!";
+        document.getElementById("contador").innerHTML = "<div style='font-size: 2em; color: #e91e63;'>¡Ya llegó el gran día! 💕</div>";
       }
     }, 1000);
   </script>
