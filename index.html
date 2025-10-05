@@ -1,926 +1,1056 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda 💍</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
-        
-        :root {
-            --verde-oscuro: #2d5a4d;
-            --verde-medio: #4a7c6d;
-            --verde-claro: #8fb9a9;
-            --dorado: #d4af37;
-            --dorado-oscuro: #b8941f;
-            --beige: #f5f1e8;
-            --beige-oscuro: #e8e2d5;
-            --blanco: #ffffff;
-            --texto-oscuro: #333333;
-        }
+  <meta charset="UTF-8">
+  <title>Invitación de Boda 💍</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+    
+    :root {
+      --verde-oscuro: #2d5a4d;
+      --verde-medio: #4a7c6d;
+      --verde-claro: #8fb9a9;
+      --dorado: #d4af37;
+      --dorado-oscuro: #b8941f;
+      --beige: #f5f1e8;
+      --beige-oscuro: #e8e2d5;
+      --blanco: #ffffff;
+      --texto-oscuro: #333333;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* FONDO DE ROSAS VERDES CORREGIDO */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: 
-                url('https://img.freepik.com/vector-gratis/frame-flor-roja-libertad-fondo-espacio-blanco_41066-2563.jpg?semt=ais_hybrid&w=740&q=80');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            /* FILTRO CORREGIDO PARA VERDE */
-            filter: hue-rotate(300deg) saturate(1.2) brightness(1.1);
-            color: var(--texto-oscuro);
-            overflow-x: hidden;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, var(--beige) 0%, var(--beige-oscuro) 100%);
+      color: var(--texto-oscuro);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-        /* Resto del CSS se mantiene igual */
-        .panel-carta {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(45, 90, 77, 0.95) 0%, rgba(74, 124, 109, 0.95) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            padding: 20px;
-        }
+    /* Panel de la carta */
+    .panel-carta {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(45, 90, 77, 0.95) 0%, rgba(74, 124, 109, 0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      padding: 20px;
+    }
 
-        .titulo-carta {
-            font-family: 'Playfair Display', serif;
-            color: var(--dorado);
-            margin-bottom: 20px;
-            font-size: 2.5em;
-            font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+    .titulo-carta {
+      font-family: 'Playfair Display', serif;
+      color: var(--dorado);
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
 
-        .subtitulo-carta {
-            color: var(--blanco);
-            margin-bottom: 40px;
-            font-size: 1.2em;
-            max-width: 500px;
-        }
+    .subtitulo-carta {
+      color: var(--blanco);
+      margin-bottom: 40px;
+      font-size: 1.2em;
+      max-width: 500px;
+    }
 
-        /* Carta interactiva */
-        .contenedor-carta {
-            position: relative;
-            margin: 30px 0;
-        }
+    /* Carta interactiva */
+    .contenedor-carta {
+      position: relative;
+      margin: 30px 0;
+    }
 
-        .carta-cerrada {
-            width: 400px;
-            height: 250px;
-            background: linear-gradient(145deg, var(--beige), var(--blanco));
-            border: 3px solid var(--dorado);
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
+    .carta-cerrada {
+      width: 400px;
+      height: 250px;
+      background: linear-gradient(145deg, var(--beige), var(--blanco));
+      border: 3px solid var(--dorado);
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
 
-        .carta-cerrada:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
-        }
+    .carta-cerrada:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
+    }
 
-        .carta-cerrada::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 50%;
-            background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-            border-radius: 20px 20px 0 0;
-        }
+    .carta-cerrada::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 50%;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-radius: 20px 20px 0 0;
+    }
 
-        .lazo {
-            width: 140px;
-            position: absolute;
-            top: 10px;       
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            animation: balanceo 3s infinite ease-in-out;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-        }
+    .lazo {
+      width: 140px;
+      position: absolute;
+      top: 10px;       
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: balanceo 3s infinite ease-in-out;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
 
-        @keyframes balanceo {
-            0%, 100% { transform: translateX(-50%) rotate(-3deg); }
-            50% { transform: translateX(-50%) rotate(3deg); }
-        }
+    @keyframes balanceo {
+      0%, 100% { transform: translateX(-50%) rotate(-3deg); }
+      50% { transform: translateX(-50%) rotate(3deg); }
+    }
 
-        .boton-carta {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
-            color: var(--verde-oscuro);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
-            z-index: 10;
-            font-weight: bold;
-            font-family: 'Montserrat', sans-serif;
-        }
+    .boton-carta {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+      color: var(--verde-oscuro);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+      z-index: 10;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-        .boton-carta:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.7);
-        }
+    .boton-carta:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 12px 25px rgba(212, 175, 55, 0.7);
+    }
 
-        .carta-abierta {
-            position: relative;
-            width: 400px;
-            height: 500px;
-            background: linear-gradient(145deg, var(--beige), var(--blanco));
-            border: 3px solid var(--dorado);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            box-sizing: border-box;
-        }
+    .carta-abierta {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      background: linear-gradient(145deg, var(--beige), var(--blanco));
+      border: 3px solid var(--dorado);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      box-sizing: border-box;
+    }
 
-        .carta-abierta::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, var(--dorado), var(--dorado-oscuro), var(--dorado));
-        }
+    .carta-abierta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--dorado), var(--dorado-oscuro), var(--dorado));
+    }
 
-        .mensaje-carta {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            color: var(--verde-oscuro);
-            text-align: center;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-style: italic;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease 0.5s;
-        }
+    .mensaje-carta {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--verde-oscuro);
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-style: italic;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease 0.5s;
+    }
 
-        .mensaje-carta.mostrar {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .mensaje-carta.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .corazon {
-            font-size: 50px;
-            color: #dc2626;
-            margin-top: 20px;
-            animation: latido 1.5s infinite;
-        }
+    .corazon {
+      font-size: 50px;
+      color: #dc2626;
+      margin-top: 20px;
+      animation: latido 1.5s infinite;
+    }
 
-        @keyframes latido {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
+    @keyframes latido {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
 
-        @keyframes abrirCarta {
-            0% {
-                transform: scale(1) rotateX(0);
-                height: 250px;
-            }
-            50% {
-                transform: scale(1.1) rotateX(10deg);
-                height: 250px;
-            }
-            100% {
-                transform: scale(1) rotateX(0);
-                height: 500px;
-            }
-        }
+    @keyframes abrirCarta {
+      0% {
+        transform: scale(1) rotateX(0);
+        height: 250px;
+      }
+      50% {
+        transform: scale(1.1) rotateX(10deg);
+        height: 250px;
+      }
+      100% {
+        transform: scale(1) rotateX(0);
+        height: 500px;
+      }
+    }
 
-        .abriendo {
-            animation: abrirCarta 1.5s forwards;
-        }
+    .abriendo {
+      animation: abrirCarta 1.5s forwards;
+    }
 
-        .loader {
-            display: none;
-            margin-top: 20px;
-            font-style: italic;
-            color: var(--dorado);
-            font-size: 1.1em;
-        }
+    .loader {
+      display: none;
+      margin-top: 20px;
+      font-style: italic;
+      color: var(--dorado);
+      font-size: 1.1em;
+    }
 
-        /* Control de música */
-        .control-musica {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            cursor: pointer;
-            z-index: 1000;
-            border: 2px solid var(--verde-oscuro);
-            transition: all 0.3s ease;
-        }
+    /* Control de música */
+    .control-musica {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado-oscuro));
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      cursor: pointer;
+      z-index: 1000;
+      border: 2px solid var(--verde-oscuro);
+      transition: all 0.3s ease;
+    }
 
-        .control-musica:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.7);
-        }
+    .control-musica:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.7);
+    }
 
-        /* Header elegante */
-        .header {
-            background: rgba(255, 255, 255, 0.85);
-            color: var(--verde-oscuro);
-            text-align: center;
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-            display: none;
-            backdrop-filter: blur(5px);
-            margin: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+    /* Header elegante */
+    .header {
+      background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      color: var(--blanco);
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+      display: none;
+    }
 
-        .nombros-novios {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5em;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            color: var(--verde-oscuro);
-        }
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><defs><pattern id="flores" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M50,20 C55,20 60,25 60,30 C60,35 55,40 50,40 C45,40 40,35 40,30 C40,25 45,20 50,20 Z" fill="%23ffffff"/><path d="M30,50 C35,50 40,55 40,60 C40,65 35,70 30,70 C25,70 20,65 20,60 C20,55 25,50 30,50 Z" fill="%23ffffff"/><path d="M70,50 C75,50 80,55 80,60 C80,65 75,70 70,70 C65,70 60,65 60,60 C60,55 65,50 70,50 Z" fill="%23ffffff"/></pattern></defs><rect width="100" height="100" fill="url(%23flores)"/></svg>');
+    }
 
-        .fecha-boda {
-            font-size: 1.4em;
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            color: var(--verde-medio);
-        }
+    .nombros-novios {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
 
-        .subtitulo {
-            font-size: 1.2em;
-            font-weight: 300;
-            opacity: 0.9;
-            color: var(--verde-oscuro);
-        }
+    .fecha-boda {
+      font-size: 1.4em;
+      font-weight: 300;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
 
-        /* Sección de versículo bíblico */
-        .seccion-versiculo {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            display: none;
-            backdrop-filter: blur(5px);
-            margin: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+    .subtitulo {
+      font-size: 1.2em;
+      font-weight: 300;
+      opacity: 0.9;
+    }
 
-        .versiculo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
-            color: var(--verde-oscuro);
-            font-style: italic;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            line-height: 1.8;
-        }
+    /* Sección de versículo bíblico */
+    .seccion-versiculo {
+      background: var(--blanco);
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      display: none;
+    }
 
-        .cita-biblica {
-            font-size: 1.1em;
-            color: var(--verde-medio);
-            font-weight: 500;
-        }
+    .versiculo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      color: var(--verde-oscuro);
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.8;
+    }
 
-        .decoracion-floral {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            opacity: 0.1;
-        }
+    .cita-biblica {
+      font-size: 1.1em;
+      color: var(--verde-medio);
+      font-weight: 500;
+    }
 
-        .floral-1 {
-            top: 20px;
-            left: 5%;
-        }
+    .decoracion-floral {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      opacity: 0.1;
+    }
 
-        .floral-2 {
-            bottom: 20px;
-            right: 5%;
-        }
+    .floral-1 {
+      top: 20px;
+      left: 5%;
+    }
 
-        /* Sección de padres */
-        .seccion-padres {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 80px 20px;
-            text-align: center;
-            display: none;
-            backdrop-filter: blur(5px);
-            margin: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+    .floral-2 {
+      bottom: 20px;
+      right: 5%;
+    }
 
-        .titulo-seccion {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            color: var(--verde-oscuro);
-            margin-bottom: 50px;
-            font-weight: 600;
-        }
+    /* CONTENEDOR DE IMAGEN CON MARCO DORADO */
+    .contenedor-imagen {
+      margin: 30px auto;
+      max-width: 400px;
+      padding: 10px;
+      background: linear-gradient(145deg, var(--beige), var(--blanco));
+      border: 3px solid var(--dorado);
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+      transition: all 0.3s ease;
+    }
 
-        .contenedor-padres {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+    .contenedor-imagen:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+    }
 
-        .grupo-padres {
-            background: var(--blanco);
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 2px solid var(--verde-claro);
-        }
+    .imagen-versiculo, .imagen-header {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      transition: all 0.3s ease;
+    }
 
-        .titulo-padres {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
-            color: var(--verde-oscuro);
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
+    .imagen-versiculo:hover, .imagen-header:hover {
+      transform: scale(1.02);
+    }
 
-        .lista-padres {
-            list-style: none;
-        }
+    /* Sección de padres */
+    .seccion-padres {
+      background: linear-gradient(135deg, var(--beige-oscuro) 0%, var(--beige) 100%);
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
 
-        .lista-padres li {
-            font-size: 1.1em;
-            color: var(--texto-oscuro);
-            margin-bottom: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--beige-oscuro);
-        }
+    .titulo-seccion {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5em;
+      color: var(--verde-oscuro);
+      margin-bottom: 50px;
+      font-weight: 600;
+    }
 
-        /* Contador de tiempo */
-        .seccion-contador {
-            background: rgba(45, 90, 77, 0.85);
-            color: var(--blanco);
-            padding: 80px 20px;
-            text-align: center;
-            display: none;
-            backdrop-filter: blur(5px);
-            margin: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+    .contenedor-padres {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-        .contador {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 30px;
-            max-width: 600px;
-            margin: 40px auto;
-        }
+    .grupo-padres {
+      background: var(--blanco);
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 2px solid var(--verde-claro);
+    }
 
-        .tiempo-item {
-            background: rgba(255,255,255,0.1);
-            padding: 25px 15px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+    .titulo-padres {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4em;
+      color: var(--verde-oscuro);
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
 
-        .tiempo-numero {
-            font-size: 2.5em;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-family: 'Playfair Display', serif;
-        }
+    .lista-padres {
+      list-style: none;
+    }
 
-        .tiempo-texto {
-            font-size: 0.9em;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    .lista-padres li {
+      font-size: 1.1em;
+      color: var(--texto-oscuro);
+      margin-bottom: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--beige-oscuro);
+    }
 
-        /* Ubicación */
-        .seccion-ubicacion {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 80px 20px;
-            text-align: center;
-            display: none;
-            backdrop-filter: blur(5px);
-            margin: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+    /* Contador de tiempo */
+    .seccion-contador {
+      background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      color: var(--blanco);
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
 
-        .info-ubicacion {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .contador {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 30px;
+      max-width: 600px;
+      margin: 40px auto;
+    }
 
-        .horario {
-            font-size: 1.3em;
-            color: var(--verde-oscuro);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
+    .tiempo-item {
+      background: rgba(255,255,255,0.1);
+      padding: 25px 15px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
 
-        .lugar {
-            font-size: 1.6em;
-            color: var(--verde-medio);
-            margin-bottom: 30px;
-            font-family: 'Playfair Display', serif;
-        }
+    .tiempo-numero {
+      font-size: 2.5em;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
 
-        .boton-mapa {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado-oscuro) 100%);
-            color: var(--blanco);
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
+    .tiempo-texto {
+      font-size: 0.9em;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        .boton-mapa:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-        }
+    /* Ubicación */
+    .seccion-ubicacion {
+      background: var(--blanco);
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
 
-        /* Galería de Fotos */
-        .seccion-galeria {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 80px 20px;
-            text-align: center;
-            display: none;
-            backdrop-filter: blur(5px);
-            margin: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+    .info-ubicacion {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .galeria {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 40px auto;
-        }
+    .horario {
+      font-size: 1.3em;
+      color: var(--verde-oscuro);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
 
-        .imagen-galeria {
-            width: 100%;
-            height: 250px;
-            border-radius: 15px;
-            border: 3px solid var(--dorado);
-            object-fit: cover;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
+    .lugar {
+      font-size: 1.6em;
+      color: var(--verde-medio);
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+    }
 
-        .imagen-galeria:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
-        }
+    .boton-mapa {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado-oscuro) 100%);
+      color: var(--blanco);
+      padding: 15px 35px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
 
-        /* Footer */
-        .footer {
-            background: rgba(45, 90, 77, 0.85);
-            color: var(--blanco);
-            text-align: center;
-            padding: 60px 20px;
-            display: none;
-            backdrop-filter: blur(5px);
-            margin: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--dorado);
-        }
+    .boton-mapa:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    }
 
-        .mensaje-final {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-            font-style: italic;
-        }
+    /* Galería de Fotos */
+    .seccion-galeria {
+      background: linear-gradient(135deg, var(--beige-oscuro) 0%, var(--beige) 100%);
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
 
-        /* Decoraciones */
-        .separador {
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--dorado), var(--dorado-oscuro));
-            margin: 30px auto;
-            border-radius: 2px;
-        }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
 
-        .flor-decorativa {
-            font-size: 2em;
-            margin: 0 10px;
-            opacity: 0.7;
-        }
+    .imagen-galeria {
+      width: 100%;
+      height: 250px;
+      border-radius: 15px;
+      border: 3px solid var(--dorado);
+      object-fit: cover;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
 
-        .contenedor-imagen {
-            margin: 20px auto;
-            max-width: 400px;
-        }
+    .imagen-galeria:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+    }
 
-        .imagen-versiculo, .imagen-header {
-            width: 100%;
-            border-radius: 15px;
-            border: 3px solid var(--dorado);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
+    /* Mesa de regalos */
+    .seccion-regalos {
+      background: var(--blanco);
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nombros-novios {
-                font-size: 2.5em;
-            }
-            
-            .versiculo {
-                font-size: 1.4em;
-            }
-            
-            .titulo-seccion {
-                font-size: 2em;
-            }
-            
-            .contador {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
-            .carta-cerrada, .carta-abierta {
-                width: 90%;
-                max-width: 350px;
-            }
-            
-            .header, .seccion-versiculo, .seccion-padres, .seccion-contador, 
-            .seccion-galeria, .seccion-ubicacion, .footer {
-                margin: 10px;
-                padding: 40px 15px;
-            }
-        }
-    </style>
+    .mensaje-regalos {
+      font-size: 1.2em;
+      color: var(--texto-oscuro);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    .opciones-regalos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+
+    .opcion-regalo {
+      background: var(--beige);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid var(--verde-claro);
+    }
+
+    .boton-regalo {
+      display: inline-block;
+      background: var(--verde-medio);
+      color: var(--blanco);
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .boton-regalo:hover {
+      background: var(--verde-oscuro);
+      transform: translateY(-2px);
+    }
+
+    /* Formulario de confirmación */
+    .seccion-confirmacion {
+      background: linear-gradient(135deg, var(--beige-oscuro) 0%, var(--beige) 100%);
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .mensaje-confirmacion {
+      font-size: 1.3em;
+      color: var(--verde-oscuro);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .formulario {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .campo-formulario {
+      margin-bottom: 25px;
+    }
+
+    .campo-formulario label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--verde-oscuro);
+      font-weight: 500;
+    }
+
+    .campo-formulario input,
+    .campo-formulario select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid var(--beige-oscuro);
+      border-radius: 8px;
+      font-size: 1em;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .campo-formulario input:focus,
+    .campo-formulario select:focus {
+      outline: none;
+      border-color: var(--verde-claro);
+      box-shadow: 0 0 0 3px rgba(143, 185, 169, 0.2);
+    }
+
+    .boton-enviar {
+      background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-oscuro) 100%);
+      color: var(--blanco);
+      border: none;
+      padding: 15px 40px;
+      border-radius: 25px;
+      font-size: 1.1em;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .boton-enviar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(45, 90, 77, 0.3);
+    }
+
+    /* Lista de invitados */
+    .seccion-invitados {
+      background: var(--blanco);
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .lista-invitados {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 30px auto;
+    }
+
+    .invitado {
+      background: var(--beige);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border: 1px solid var(--verde-claro);
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+      color: var(--blanco);
+      text-align: center;
+      padding: 60px 20px;
+      display: none;
+    }
+
+    .mensaje-final {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4em;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Decoraciones */
+    .separador {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--dorado), var(--dorado-oscuro));
+      margin: 30px auto;
+      border-radius: 2px;
+    }
+
+    .flor-decorativa {
+      font-size: 2em;
+      margin: 0 10px;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nombros-novios {
+        font-size: 2.5em;
+      }
+      
+      .versiculo {
+        font-size: 1.4em;
+      }
+      
+      .titulo-seccion {
+        font-size: 2em;
+      }
+      
+      .contador {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .carta-cerrada, .carta-abierta {
+        width: 90%;
+        max-width: 350px;
+      }
+      
+      .contenedor-imagen {
+        max-width: 300px;
+        margin: 20px auto;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Audio para música de fondo -->
-    <audio id="musicaFondo" loop>
-        <source src="https://files.catbox.moe/v19ro0.mpeg" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
+  <!-- Audio para música de fondo -->
+  <audio id="musicaFondo" loop>
+    <source src="https://files.catbox.moe/v19ro0.mpeg" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
 
-    <!-- Control de música -->
-    <div class="control-musica" id="controlMusica" onclick="toggleMusica()">
-        <span id="iconoMusica">🔊</span>
+  <!-- Control de música -->
+  <div class="control-musica" id="controlMusica" onclick="toggleMusica()">
+    <span id="iconoMusica">🔊</span>
+  </div>
+
+  <!-- Panel de la carta -->
+  <div class="panel-carta" id="panelCarta">
+    <div class="titulo-carta">Nuestra Invitación Especial</div>
+    <div class="subtitulo-carta">
+      Te invitamos a ser parte de nuestro día más especial 💕
     </div>
 
-    <!-- Panel de la carta -->
-    <div class="panel-carta" id="panelCarta">
-        <div class="titulo-carta">Nuestra Invitación Especial</div>
-        <div class="subtitulo-carta">
-            Te invitamos a ser parte de nuestro día más especial 💕
+    <div class="contenedor-carta">
+      <div class="carta-cerrada" id="cartaCerrada">
+        <div class="lazo">
+          <svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M70,10 C85,10 95,25 95,40 C95,55 85,70 70,70 C55,70 45,55 45,40 C45,25 55,10 70,10 Z" fill="#d4af37"/>
+            <path d="M70,15 C60,15 50,25 50,40 C50,55 60,65 70,65 C80,65 90,55 90,40 C90,25 80,15 70,15 Z" fill="#b8941f"/>
+            <path d="M70,20 C65,20 55,30 55,40 C55,50 65,60 70,60 C75,60 85,50 85,40 C85,30 75,20 70,20 Z" fill="#9a7a1a"/>
+          </svg>
         </div>
+      </div>
 
-        <div class="contenedor-carta">
-            <div class="carta-cerrada" id="cartaCerrada">
-                <div class="lazo">
-                    <svg viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M70,10 C85,10 95,25 95,40 C95,55 85,70 70,70 C55,70 45,55 45,40 C45,25 55,10 70,10 Z" fill="#d4af37"/>
-                        <path d="M70,15 C60,15 50,25 50,40 C50,55 60,65 70,65 C80,65 90,55 90,40 C90,25 80,15 70,15 Z" fill="#b8941f"/>
-                        <path d="M70,20 C65,20 55,30 55,40 C55,50 65,60 70,60 C75,60 85,50 85,40 C85,30 75,20 70,20 Z" fill="#9a7a1a"/>
-                    </svg>
-                </div>
-            </div>
+      <button class="boton-carta" id="botonAbreme" onclick="abrirCarta()">Ábreme</button>
 
-            <button class="boton-carta" id="botonAbreme" onclick="abrirCarta()">Ábreme</button>
-
-            <div class="carta-abierta" id="cartaAbierta">
-                <div class="mensaje-carta" id="mensajeCarta">
-                    "El amor no se mide por la cantidad de tiempo, sino por la intensidad con la que late el corazón. 
-                    Hoy, nuestro corazón late al unísono y queremos compartir este latido eterno contigo."
-                </div>
-                <div class="corazon">💕</div>
-            </div>
+      <div class="carta-abierta" id="cartaAbierta">
+        <div class="mensaje-carta" id="mensajeCarta">
+          "El amor no se mide por la cantidad de tiempo, sino por la intensidad con la que late el corazón. 
+          Hoy, nuestro corazón late al unísono y queremos compartir este latido eterno contigo."
         </div>
-
-        <div class="loader" id="loader">Cargando nuestra historia de amor...</div>
+        <div class="corazon">💕</div>
+      </div>
     </div>
 
-    <!-- Contenido principal (oculto inicialmente) -->
-    <header class="header" id="header">
-        <div class="flor-decorativa">💍</div>
-        <h1>PEDIDA DE MANO</h1>
-        <h1 class="nombros-novios">Angel & Isabel</h1>
-        <div class="fecha-boda">25 DE OCTUBRE 2025</div>
-        <div class="subtitulo">Con la bendición de Dios y el amor de nuestras familias</div>
-    </header>
+    <div class="loader" id="loader">Cargando nuestra historia de amor...</div>
+  </div>
 
-    <!-- Versículo Bíblico -->
-    <section class="seccion-versiculo" id="versiculo">
-        <div class="decoracion-floral floral-1">🌿</div>
-        <div class="decoracion-floral floral-2">🌿</div>
-        <p class="versiculo">"El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia."</p>
-        <p class="cita-biblica">1 Corintios 13:7</p>
-        <div class="separador"></div>
+  <!-- Contenido principal (oculto inicialmente) -->
+  <header class="header" id="header">
+    <div class="flor-decorativa">💍</div>
+    <h1>PEDIDA DE MANO</h1>
+    <h1 class="nombros-novios">Angel & Isabel</h1>
+    <div class="fecha-boda">25 DE OCTUBRE 2025</div>
+    <div class="subtitulo">Con la bendición de Dios y el amor de nuestras familias</div>
+  </header>
 
-        <div class="contenedor-imagen">
-            <img src="https://i.ibb.co/39pY7vX1/Whats-App-Image-2025-10-04-at-5-34-22-PM.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-versiculo"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-        </div>
-    </section>
+  <!-- Versículo Bíblico CON MARCO DORADO -->
+  <section class="seccion-versiculo" id="versiculo">
+    <div class="decoracion-floral floral-1">🌿</div>
+    <div class="decoracion-floral floral-2">🌿</div>
+    <p class="versiculo">"El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia."</p>
+    <p class="cita-biblica">1 Corintios 13:7</p>
+    <div class="separador"></div>
 
-    <!-- Frases -->
-    <section class="seccion-versiculo" id="frases1">
-        <div class="decoracion-floral floral-1">🌿</div>
-        <div class="decoracion-floral floral-2">🌿</div>
-        <p class="versiculo">"Dios, en su infinita bondad, nos ha concedido el privilegio de conocernos y de amarnos.
-    Con su bendición hemos aprendido que el amor verdadero es el camino que nos guía y la fuerza que nos une.
-    Hoy queremos dar un paso más en nuestra historia, sellando este sentimiento con la promesa de unir nuestras vidas para siempre.
-    Con alegría en el corazón y agradecimiento en el alma, deseamos compartir este momento tan especial con nuestras familias y seres queridos, quienes son testigos de nuestro amor y parte esencial de nuestra felicidad."</p>
-        <div class="separador"></div>
-    </section>
+    <div class="contenedor-imagen">
+        <img src="https://i.ibb.co/39pY7vX1/Whats-App-Image-2025-10-04-at-5-34-22-PM.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-versiculo"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+    </div>
+  </section>
 
-    <!-- Padres -->
-    <section class="seccion-padres" id="padres">
-        <h2 class="titulo-seccion">"LOS PADRES DE NOVIO Y NOVIA"</h2>
-        <div class="contenedor-padres">
-            <div class="grupo-padres">
-                <h3 class="titulo-padres">Padres de la Novia</h3>
-                <ul class="lista-padres">
-                    <li>Carmen Janampa Huacho</li>
-                </ul>
-            </div>
-            <div class="grupo-padres">
-                <h3 class="titulo-padres">Padres del Novio</h3>
-                <ul class="lista-padres">
-                    <li>Filomena Ordoñez Martinez</li>
-                </ul>
-            </div>
-        </div>
-        <div class="separador"></div>
-    </section>
+<!-- El resto de tu HTML permanece igual... -->
 
-    <!-- Contador -->
-    <section class="seccion-contador" id="contador">
-        <h2 class="titulo-seccion" style="color: var(--blanco);">"Falta Pocos dias para el gran dia"</h2>
-        <h2 class="subtitulo-seccion" style="color: var(--blanco);">"Hemos reservado este día y esta hora para compartir contigo la alegría de nuestra Pedida de Mano."</h2>
-        
-        <div class="contador" id="contadorTiempo">
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="dias">00</div>
-                <div class="tiempo-texto">Días</div>
-            </div>
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="horas">00</div>
-                <div class="tiempo-texto">Horas</div>
-            </div>
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="minutos">00</div>
-                <div class="tiempo-texto">Minutos</div>
-            </div>
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="segundos">00</div>
-                <div class="tiempo-texto">Segundos</div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Galería de Fotos -->
-    <section class="seccion-galeria" id="galeria">
-        <h2 class="titulo-seccion">Nuestros Momentos Especiales</h2>
-        <div class="galeria">
-            <img src="https://i.ibb.co/39pY7vX1/Whats-App-Image-2025-10-04-at-5-34-22-PM.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+<!-- Frases -->
+   <section class="seccion-versiculo" id="versiculo">
+    <div class="decoracion-floral floral-1">🌿</div>
+    <div class="decoracion-floral floral-2">🌿</div>
+    <p class="versiculo">"Dios, en su infinita bondad, nos ha concedido el privilegio de conocernos y de amarnos.
+Con su bendición hemos aprendido que el amor verdadero es el camino que nos guía y la fuerza que nos une.
+Hoy queremos dar un paso más en nuestra historia, sellando este sentimiento con la promesa de unir nuestras vidas para siempre.
+Con alegría en el corazón y agradecimiento en el alma, deseamos compartir este momento tan especial con nuestras familias y seres queridos, quienes son testigos de nuestro amor y parte esencial de nuestra felicidad."</p>
+    <div class="separador"></div>
+  </section>
 
-            <img src="https://i.ibb.co/SwWwsLQJ/Whats-App-Image-2025-10-04-at-5-41-51-PM.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-              
-            <img src="https://i.ibb.co/7d9n6f9q/Whats-App-Image-2025-10-04-at-5-41-51-PM-1.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-              
-            <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
-                 alt="Celebrando nuestro amor" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-            
-            <img src="https://i.ibb.co/3mkH11CG/Whats-App-Image-2025-10-02-at-2-13-56-PM-1.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-            
-            <img src="https://i.ibb.co/fYcBpXf9/Whats-App-Image-2025-10-04-at-5-41-51-PM-2.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+  <!-- Padres -->
+  <section class="seccion-padres" id="padres">
+    <h2 class="titulo-seccion">"LOS PADRES DE NOVIO Y NOVIA"</h2>
+    <div class="contenedor-padres">
+      <div class="grupo-padres">
+        <h3 class="titulo-padres">Padres de la Novia</h3>
+        <ul class="lista-padres">
+          <li>Carmen Janampa Huacho</li>
+        </ul>
+      </div>
+      <div class="grupo-padres">
+        <h3 class="titulo-padres">Padres del Novio</h3>
+        <ul class="lista-padres">
+          <li>Filomena Ordoñez Martinez</li>
+        </ul>
+      </div>
+    </div>
+    <div class="separador"></div>
+  </section>
 
-            <img src="https://i.ibb.co/MDJBKkkP/Whats-App-Image-2025-10-04-at-5-41-51-PM-3.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'"> 
-
-            <img src="https://i.ibb.co/QGGnShG/Whats-App-Image-2025-10-04-at-5-48-44-PM.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-
-            <img src="https://i.ibb.co/h1mD82gV/Whats-App-Image-2025-10-04-at-5-52-39-PM.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-galeria"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-        </div>
-        <div class="separador"></div>
-    </section>
-
-    <!--mas frases-->
-    <section class="seccion-versiculo" id="frases2">
-        <div class="decoracion-floral floral-1">🌿</div>
-        <div class="decoracion-floral floral-2">🌿</div>
-        <p class="versiculo">"Gracias por ser parte de nuestra historia de amor."
-    "Tu presencia será el mejor regalo en este día tan especial."
-    "Porque la vida se disfruta más cuando se comparte con quienes queremos."</p>
-        <div class="separador"></div>
-    </section>
-
-    <!-- Ubicación -->
-    <section class="seccion-ubicacion" id="ubicacion">
-        <h2 class="titulo-seccion">"NUESTRA CELEBRACION"</h2>
-        <div class="info-ubicacion">
-            <div class="horario">Sábado 25 de Octubre, 2025 - 12:00 PM</div>
-            <div class="lugar">Salón de Recepcion "CHOPCCA"</div>
-            <div class="horario"> las brisas, pilcomayo, Huancayo</div>
-            <a href="https://maps.app.goo.gl/tk6ounEWJSvhb4986" target="_blank" class="boton-mapa">
-                Ver en Google Maps
-            </a>
-        </div>
-        <div class="separador"></div>
-    </section>
-
-    <!-- ANGEL E SAIBEL -->
-    <header class="header" id="header2">
-        <div class="flor-decorativa">💍</div>
-        <h1 class="nombros-novios">Angel & Isabel</h1>
-        <div class="subtitulo">"Los esperamos con mucho cariño."
-    "Este día quedará grabado en nuestros corazónes, acompáñanos."</div>
-
-        <div class="contenedor-imagen">
-            <img src="https://i.ibb.co/459YSys/Whats-App-Image-2025-10-04-at-6-12-43-PM.jpg" 
-                 alt="Nuestro momento especial" 
-                 class="imagen-header"
-                 onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
-        </div>
-    </header>
+  <!-- Contador -->
+  <section class="seccion-contador" id="contador">
+    <h2 class="titulo-seccion" style="color: var(--blanco);">"Falta Pocos dias para el gran dia"</h2>
+     <h2 class="subtitulo-seccion" style="color: var(--blanco);">“Hemos reservado este día y esta hora para compartir contigo la alegría de nuestra Pedida de Mano.” . 
+</h2>
     
-    <!-- Footer -->
-    <footer class="footer" id="footer">
-        <p class="mensaje-final">
-            "Con mucha ilusión queremos vivir este momento rodeados de personas que han compartido y formado parte 
-            de nuestra historia. Será un honor contar con tu presencia."
-        </p>
-        <div class="separador"></div>
-        <div class="flor-decorativa">💚</div>
-        <div style="margin-top: 20px; opacity: 0.8;">
-        gracias por tu presencia
-        </div>
-    </footer>
+    <div class="contador" id="contadorTiempo">
+      <div class="tiempo-item">
+        <div class="tiempo-numero" id="dias">00</div>
+        <div class="tiempo-texto">Días</div>
+      </div>
+      <div class="tiempo-item">
+        <div class="tiempo-numero" id="horas">00</div>
+        <div class="tiempo-texto">Horas</div>
+      </div>
+      <div class="tiempo-item">
+        <div class="tiempo-numero" id="minutos">00</div>
+        <div class="tiempo-texto">Minutos</div>
+      </div>
+      <div class="tiempo-item">
+        <div class="tiempo-numero" id="segundos">00</div>
+        <div class="tiempo-texto">Segundos</div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Control de música
-        const musica = document.getElementById('musicaFondo');
-        const iconoMusica = document.getElementById('iconoMusica');
-        let musicaReproduciendo = false;
+  <!-- Galería de Fotos -->
 
-        function iniciarMusica() {
-            musica.play().then(() => {
-                musicaReproduciendo = true;
-                iconoMusica.textContent = '🔊';
-            }).catch(error => {
-                console.log('La reproducción automática fue bloqueada:', error);
-                iconoMusica.textContent = '🎵';
-                musicaReproduciendo = false;
-            });
-        }
+  <section class="seccion-galeria" id="galeria">
+    <h2 class="titulo-seccion">Nuestros Momentos Especiales</h2>
+    <div class="galeria">
+        <img src="https://i.ibb.co/39pY7vX1/Whats-App-Image-2025-10-04-at-5-34-22-PM.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
 
-        function toggleMusica() {
-            if (musicaReproduciendo) {
-                musica.pause();
-                iconoMusica.textContent = '🎵';
-            } else {
-                musica.play();
-                iconoMusica.textContent = '🔊';
-            }
-            musicaReproduciendo = !musicaReproduciendo;
-        }
-
-        // Función para abrir la carta
-        function abrirCarta() {
-            document.getElementById('botonAbreme').style.display = 'none';
-            document.getElementById('loader').style.display = 'block';
-            
-            const cartaCerrada = document.getElementById('cartaCerrada');
-            const cartaAbierta = document.getElementById('cartaAbierta');
-            
-            cartaCerrada.classList.add('abriendo');
-            
-            setTimeout(() => {
-                cartaCerrada.style.display = 'none';
-                cartaAbierta.style.display = 'flex';
-                
-                // INICIAR MÚSICA cuando la carta se abre
-                iniciarMusica();
-                
-                setTimeout(() => {
-                    document.getElementById('mensajeCarta').classList.add('mostrar');
-                    
-                    setTimeout(() => {
-                        document.getElementById('panelCarta').style.display = 'none';
-                        // Mostrar todo el contenido
-                        document.querySelectorAll('.header, .seccion-versiculo, .seccion-padres, .seccion-contador, .seccion-galeria, .seccion-ubicacion, .footer').forEach(seccion => {
-                            seccion.style.display = 'block';
-                        });
-                        // Mostrar secciones adicionales
-                        document.getElementById('frases1').style.display = 'block';
-                        document.getElementById('frases2').style.display = 'block';
-                        document.getElementById('header2').style.display = 'block';
-                    }, 5000);
-                }, 500);
-            }, 1500);
-        }
-
-        // Contador de tiempo
-        const fechaEvento = new Date("Oct 25, 2025 19:00:00").getTime();
+        <img src="https://i.ibb.co/SwWwsLQJ/Whats-App-Image-2025-10-04-at-5-41-51-PM.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+          
+        <img src="https://i.ibb.co/7d9n6f9q/Whats-App-Image-2025-10-04-at-5-41-51-PM-1.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+          
+        <img src="https://i.ibb.co/0pw5kBKQ/Whats-App-Image-2025-09-23-at-9-54-51-AM.jpg" 
+             alt="Celebrando nuestro amor" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
         
-        const actualizarContador = () => {
-            const ahora = new Date().getTime();
-            const distancia = fechaEvento - ahora;
+        <img src="https://i.ibb.co/3mkH11CG/Whats-App-Image-2025-10-02-at-2-13-56-PM-1.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+        
+        <img src="https://i.ibb.co/fYcBpXf9/Whats-App-Image-2025-10-04-at-5-41-51-PM-2.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
 
-            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+        <img src="https://i.ibb.co/MDJBKkkP/Whats-App-Image-2025-10-04-at-5-41-51-PM-3.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'"> 
 
-            document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
-            document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
-            document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
-            document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
+        <img src="https://i.ibb.co/QGGnShG/Whats-App-Image-2025-10-04-at-5-48-44-PM.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
 
-            if (distancia < 0) {
-                clearInterval(intervalo);
-                document.getElementById("contadorTiempo").innerHTML = '<div style="font-size: 1.5em;">¡Ya llegó el gran día! 💕</div>';
-            }
-        };
+       <img src="https://i.ibb.co/h1mD82gV/Whats-App-Image-2025-10-04-at-5-52-39-PM.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-galeria"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
 
-        const intervalo = setInterval(actualizarContador, 1000);
-        actualizarContador();
-    </script>
+    </div>
+    <div class="separador"></div>
+</section>
+
+  <!--mas frases-->
+   <section class="seccion-versiculo" id="versiculo">
+    <div class="decoracion-floral floral-1">🌿</div>
+    <div class="decoracion-floral floral-2">🌿</div>
+    <p class="versiculo">“Gracias por ser parte de nuestra historia de amor.”
+“Tu presencia será el mejor regalo en este día tan especial.”
+“Porque la vida se disfruta más cuando se comparte con quienes queremos.”</p>
+    <div class="separador"></div>
+  </section>
+
+  <!-- Ubicación -->
+  <section class="seccion-ubicacion" id="ubicacion">
+    <h2 class="titulo-seccion">"NUESTRA CELEBRACION"</h2>
+    <div class="info-ubicacion">
+      <div class="horario">Sábado 25 de Octubre, 2025 - 12:00 PM</div>
+      <div class="lugar">Salón de Recepcion "CHOPCCA"</div>
+      <div class="horario"> las brisas, pilcomayo, Huancayo</div>
+      <a href="https://maps.app.goo.gl/tk6ounEWJSvhb4986" target="_blank" class="boton-mapa">
+        Ver en Google Maps
+      </a>
+    </div>
+    <div class="separador"></div>
+  </section>
+
+  <!-- ANGEL E SAIBEL -->
+<header class="header" id="header">
+    <div class="flor-decorativa">💍</div>
+    <h1 class="nombros-novios">Angel & Isabel</h1>
+    <div class="subtitulo">“Los esperamos con mucho cariño.”
+“Este día quedará grabado en nuestros corazónes, acompáñanos.”</div>
+
+   <div class="contenedor-imagen">
+         <img src="https://i.ibb.co/459YSys/Whats-App-Image-2025-10-04-at-6-12-43-PM.jpg" 
+             alt="Nuestro momento especial" 
+             class="imagen-header"
+             onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+    </div>
+</header>
+  
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <p class="mensaje-final">
+      "Con mucha ilusión queremos vivir este momento rodeados de personas que han compartido y formado parte 
+      de nuestra historia. Será un honor contar con tu presencia."
+    </p>
+    <div class="separador"></div>
+    <div class="flor-decorativa">🌿🌿🌿🌿🌿</div>
+    <div style="margin-top: 20px; opacity: 0.8;">
+    gracias por tu presencia
+    </div>
+  </footer>
+
+  <script>
+    // Control de música
+    const musica = document.getElementById('musicaFondo');
+    const iconoMusica = document.getElementById('iconoMusica');
+    let musicaReproduciendo = false;
+
+    function iniciarMusica() {
+      musica.play().then(() => {
+        musicaReproduciendo = true;
+        iconoMusica.textContent = '🔊';
+      }).catch(error => {
+        console.log('La reproducción automática fue bloqueada:', error);
+        iconoMusica.textContent = '🎵';
+        musicaReproduciendo = false;
+      });
+    }
+
+    function toggleMusica() {
+      if (musicaReproduciendo) {
+        musica.pause();
+        iconoMusica.textContent = '🎵';
+      } else {
+        musica.play();
+        iconoMusica.textContent = '🔊';
+      }
+      musicaReproduciendo = !musicaReproduciendo;
+    }
+
+    // Función para abrir la carta
+    function abrirCarta() {
+      document.getElementById('botonAbreme').style.display = 'none';
+      document.getElementById('loader').style.display = 'block';
+      
+      const cartaCerrada = document.getElementById('cartaCerrada');
+      const cartaAbierta = document.getElementById('cartaAbierta');
+      
+      cartaCerrada.classList.add('abriendo');
+      
+      setTimeout(() => {
+        cartaCerrada.style.display = 'none';
+        cartaAbierta.style.display = 'flex';
+        
+        // INICIAR MÚSICA cuando la carta se abre
+        iniciarMusica();
+        
+        setTimeout(() => {
+          document.getElementById('mensajeCarta').classList.add('mostrar');
+          
+          setTimeout(() => {
+            document.getElementById('panelCarta').style.display = 'none';
+            // Mostrar todo el contenido
+            document.querySelectorAll('.header, .seccion-versiculo, .seccion-padres, .seccion-contador, .seccion-galeria, .seccion-ubicacion, .seccion-regalos, .seccion-confirmacion, .seccion-invitados, .footer').forEach(seccion => {
+              seccion.style.display = 'block';
+            });
+          }, 5000);
+        }, 500);
+      }, 1500);
+    }
+
+    // Contador de tiempo
+    const fechaEvento = new Date("Oct 25, 2025 19:00:00").getTime();
+    
+    const actualizarContador = () => {
+      const ahora = new Date().getTime();
+      const distancia = fechaEvento - ahora;
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
+      document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+      document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
+      document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
+
+      if (distancia < 0) {
+        clearInterval(intervalo);
+        document.getElementById("contadorTiempo").innerHTML = '<div style="font-size: 1.5em;">¡Ya llegó el gran día! 💕</div>';
+      }
+    };
+
+    const intervalo = setInterval(actualizarContador, 1000);
+    actualizarContador();
+  </script>
 </body>
 </html>
